@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrinne Make | Catálogo Premium</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #f3f4f6;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .filter-btn {
+            padding: 8px 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            background: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filter-btn.active {
+            background: linear-gradient(to right, #FF4FA3, #A855F7);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.3);
+        }
+
+        #cart-drawer.open #cart-content { transform: translateX(0); }
+        
+        #product-modal { transition: opacity 0.3s ease; }
+        .modal-scale { transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        #product-modal.active .modal-scale { transform: scale(1); }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #A855F7;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-150%);
+            transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 200;
+        }
+        .toast.show { transform: translateY(0); }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #fbcfe8; border-radius: 10px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-[#FAFAFA] text-gray-900">
+
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-pink-50 px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-playfair text-[#A855F7] font-bold italic tracking-tighter">Vitrinne Make</h1>
+        
+        <button onclick="toggleCart()" class="relative p-2.5 bg-pink-50 rounded-full hover:bg-pink-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF4FA3" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span id="cart-count" class="absolute -top-1 -right-1 bg-[#FF4FA3] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold shadow-md">0</span>
+        </button>
+    </header>
+
+    <section class="pt-32 pb-10 px-6 container mx-auto">
+        <h2 class="text-4xl md:text-6xl font-playfair leading-tight mb-8 max-w-2xl">
+            Beleza que <span class="text-[#FF4FA3]">desperta</span> sua melhor versão.
+        </h2>
+        
+        <div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+            <button class="filter-btn active" onclick="filterProducts('Todos', this)">Todos</button>
+            <button class="filter-btn" onclick="filterProducts('Batons', this)">Batons</button>
+            <button class="filter-btn" onclick="filterProducts('Bases', this)">Bases</button>
+            <button class="filter-btn" onclick="filterProducts('Utensilios', this)">Utensílios</button>
+        </div>
+    </section>
+
+    <section class="px-6 container mx-auto pb-20">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="product-grid"></div>
+    </section>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-[2rem] max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row modal-scale">
+            <button onclick="closeModal()" class="absolute top-5 right-5 z-20 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all text-gray-500">✕</button>
+            
+            <div class="w-full md:w-1/2 h-80 md:h-[550px] relative group overflow-hidden bg-gray-50">
+                <div id="modal-slider" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                    </div>
+
+                <button id="prev-btn" onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-all z-10 text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button id="next-btn" onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-all z-10 text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6 6-6"/></svg>
+                </button>
+
+                <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <span id="modal-cat" class="text-[10px] font-bold text-[#FF4FA3] bg-pink-50 px-3 py-1 rounded-full w-fit mb-4 uppercase tracking-[0.2em]">Categoria</span>
+                <h4 id="modal-title" class="text-3xl font-playfair font-bold mb-4">Nome do Produto</h4>
+                <p id="modal-desc" class="text-gray-500 text-sm mb-8 leading-relaxed">Descrição do produto...</p>
+                
+                <div class="flex items-baseline gap-2 mb-8">
+                    <span id="modal-price" class="text-3xl font-bold text-[#A855F7]">R$ 0,00</span>
+                </div>
+
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex items-center bg-gray-100 rounded-full p-1.5 px-4 gap-6">
+                        <button onclick="changeModalQty(-1)" class="text-xl font-bold text-gray-400 hover:text-pink-500">-</button>
+                        <span id="modal-qty" class="font-bold w-4 text-center">1</span>
+                        <button onclick="changeModalQty(1)" class="text-xl font-bold text-gray-400 hover:text-pink-500">+</button>
+                    </div>
+                </div>
+
+                <button id="add-to-cart-btn" class="w-full bg-[#FF4FA3] text-white py-4 rounded-2xl font-bold shadow-lg shadow-pink-100 hover:scale-[1.02] active:scale-95 transition-all">
+                    Adicionar à Sacola
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-drawer" class="fixed inset-0 z-[110] hidden">
+        <div class="absolute inset-0 bg-black/20 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div id="cart-content" class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-500">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h5 class="text-xl font-playfair font-bold">Minha Sacola</h5>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-black">✕</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items"></div>
+            <div class="p-8 border-t bg-gray-50/50">
+                <div class="flex justify-between text-xl font-bold mb-8">
+                    <span class="text-gray-500 font-medium">Subtotal</span>
+                    <span id="cart-total" class="text-[#A855F7]">R$ 0,00</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-[#111] text-white py-5 rounded-2xl font-bold hover:bg-black transition-all flex items-center justify-center gap-2">
+                    Finalizar via WhatsApp
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { 
+                id: 1, 
+                name: "Po Banana", 
+                category: "Bases", 
+                price: 15.00, 
+                desc: "Po Banana suave e natural, perfeito para fixar produtos.", 
+                img: "imagens/Pobanana.jpeg",
+                imgs: ["imagens/Pobanana.jpeg"] 
+            },
+            { 
+                id: 2, 
+                name: "Touca de Setim", 
+                category: "Utensilios", 
+                price: 15.00, 
+                desc: "Maciez e conforto, ajuda a não embaraçar o cabelo.", 
+                img: "imagens/toucaSetin.jpeg",
+                imgs: ["imagens/toucaSetin.jpeg",] 
+            },
+            { 
+                id: 3, 
+                name: "Ventilador Porquinho Portátil", 
+                category: "Utensilios", 
+                price: 15.00, 
+                desc: "Secador ultra rápido de aplicações feitas na pele.", 
+                img: "imagens/VentiladorPor.jpeg",
+                imgs: ["imagens/VentiladorPor.jpeg"]
+            },
+            { 
+                id: 4, 
+                name: "Lacos", 
+                category: "Utensilios", 
+                price: 10.00, 
+                desc: "Laço super macio.", 
+                img: "imagens/lacoCinza.jpeg", 
+                imgs: ["imagens/lacoCinza.jpeg", "imagens/lacoMarrom.jpeg"]
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('vitrinne_cart')) || [];
+        let modalQty = 1;
+        let activeProduct = null;
+        let currentSlide = 0;
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
+        }
+
+        function renderProducts(list) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = list.map(p => `
+                <div class="cursor-pointer group" onclick="openModal(${p.id})">
+                    <div class="img-container rounded-[2rem] mb-5 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="px-2">
+                        <span class="text-[9px] text-[#FF4FA3] font-extrabold uppercase tracking-widest">${p.category}</span>
+                        <h4 class="font-playfair font-bold text-lg mt-1 group-hover:text-[#A855F7] transition-colors">${p.name}</h4>
+                        <p class="text-gray-900 font-bold mt-1">R$ ${p.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // MODAL E SLIDER
+        function openModal(id) {
+            activeProduct = products.find(p => p.id === id);
+            modalQty = 1;
+            currentSlide = 0;
+
+            document.getElementById('modal-title').innerText = activeProduct.name;
+            document.getElementById('modal-cat').innerText = activeProduct.category;
+            document.getElementById('modal-desc').innerText = activeProduct.desc;
+            document.getElementById('modal-price').innerText = `R$ ${activeProduct.price.toFixed(2)}`;
+            document.getElementById('modal-qty').innerText = modalQty;
+
+            // Lógica das imagens
+            const images = (activeProduct.imgs && activeProduct.imgs.length > 0) ? activeProduct.imgs : [activeProduct.img];
+            
+            const slider = document.getElementById('modal-slider');
+            const dots = document.getElementById('slider-dots');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            slider.style.width = `${images.length * 100}%`;
+            slider.innerHTML = images.map(src => `
+                <div style="width: ${100 / images.length}%" class="h-full flex-shrink-0">
+                    <img src="${src}" class="w-full h-full object-cover">
+                </div>
+            `).join('');
+
+            if (images.length > 1) {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+                dots.innerHTML = images.map((_, i) => `
+                    <div class="w-2 h-2 rounded-full bg-black/20 transition-all ${i === 0 ? 'bg-black w-4' : ''}"></div>
+                `).join('');
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                dots.innerHTML = '';
+            }
+
+            updateSlidePosition();
+
+            const m = document.getElementById('product-modal');
+            m.classList.remove('hidden');
+            setTimeout(() => m.classList.add('active', 'opacity-100'), 10);
+            document.getElementById('add-to-cart-btn').onclick = () => addToCart(activeProduct, modalQty);
+        }
+
+        function changeSlide(dir) {
+            const images = (activeProduct.imgs && activeProduct.imgs.length > 0) ? activeProduct.imgs : [activeProduct.img];
+            currentSlide = (currentSlide + dir + images.length) % images.length;
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            const slider = document.getElementById('modal-slider');
+            const dots = document.querySelectorAll('#slider-dots div');
+            const images = (activeProduct.imgs && activeProduct.imgs.length > 0) ? activeProduct.imgs : [activeProduct.img];
+            
+            const movePercentage = currentSlide * (100 / images.length);
+            slider.style.transform = `translateX(-${movePercentage}%)`;
+            
+            dots.forEach((dot, i) => {
+                if (i === currentSlide) {
+                    dot.className = "w-4 h-2 rounded-full bg-black transition-all";
+                } else {
+                    dot.className = "w-2 h-2 rounded-full bg-black/20 transition-all";
+                }
+            });
+        }
+
+        function closeModal() {
+            const m = document.getElementById('product-modal');
+            m.classList.remove('active', 'opacity-100');
+            setTimeout(() => m.classList.add('hidden'), 300);
+        }
+
+        function changeModalQty(val) {
+            modalQty = Math.max(1, modalQty + val);
+            document.getElementById('modal-qty').innerText = modalQty;
+        }
+
+        function toggleCart() {
+            const d = document.getElementById('cart-drawer');
+            if(d.classList.contains('hidden')) {
+                d.classList.remove('hidden');
+                setTimeout(() => d.classList.add('open'), 10);
+            } else {
+                d.classList.remove('open');
+                setTimeout(() => d.classList.add('hidden'), 500);
+            }
+        }
+
+        function addToCart(product, qty) {
+            const exists = cart.find(i => i.id === product.id);
+            if(exists) exists.qty += qty; else cart.push({...product, qty});
+            save();
+            closeModal();
+            showToast('Adicionado à sacola! ✨');
+            setTimeout(toggleCart, 400);
+        }
+
+        function updateCartQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if(item) {
+                item.qty = Math.max(1, item.qty + delta);
+                save();
+            }
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(i => i.id !== id);
+            save();
+        }
+
+        function save() {
+            localStorage.setItem('vitrinne_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const totalLabel = document.getElementById('cart-total');
+            const countLabel = document.getElementById('cart-count');
+            
+            const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+            countLabel.innerText = totalItems;
+            
+            const totalValue = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            totalLabel.innerText = `R$ ${totalValue.toFixed(2)}`;
+
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-300 py-12 text-sm">Sua sacola está vazia.</p>`;
+            } else {
+                container.innerHTML = cart.map(i => `
+                    <div class="flex gap-4">
+                        <img src="${i.img}" class="w-20 h-20 object-cover rounded-2xl shadow-sm">
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <h6 class="font-bold text-sm">${i.name}</h6>
+                                <button onclick="removeItem(${i.id})" class="text-gray-300 hover:text-red-400">✕</button>
+                            </div>
+                            <p class="text-xs text-pink-500 font-bold mt-1">R$ ${i.price.toFixed(2)}</p>
+                            <div class="flex items-center mt-3 gap-4">
+                                <div class="flex items-center bg-gray-100 rounded-lg px-2 py-1 gap-4">
+                                    <button onclick="updateCartQty(${i.id}, -1)" class="text-gray-400">-</button>
+                                    <span class="text-xs font-bold">${i.qty}</span>
+                                    <button onclick="updateCartQty(${i.id}, 1)" class="text-gray-400">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function filterProducts(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filtered = cat === 'Todos' ? products : products.filter(p => p.category === cat);
+            renderProducts(filtered);
+        }
+
+        function checkout() {
+            if(cart.length === 0) return;
+            let msg = ` *Novo Pedido - Vitrinne Make*\n\n`;
+            cart.forEach(i => msg += `• ${i.qty}x ${i.name} - R$ ${(i.price * i.qty).toFixed(2)}\n`);
+            msg += `\n*Total: ${document.getElementById('cart-total').innerText}*`;
+            window.open(`https://wa.me/5535991982235?text=${encodeURIComponent(msg)}`);
+        }
+
+        renderProducts(products);
+        updateCartUI();
+    </script>
+</body>
+</html>

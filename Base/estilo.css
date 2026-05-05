@@ -1,0 +1,57 @@
+/* Custom Fonts and Smoothness */
+body {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    background: white;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    color: #4b5563;
+}
+
+.filter-btn.active {
+    background: linear-gradient(to right, #FF4FA3, #9333EA);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(255, 79, 163, 0.3);
+}
+
+.product-card {
+    background: white;
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 79, 163, 0.05);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-card {
+    height: 450px;
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+}
+
+#cart-drawer.open #cart-content {
+    transform: translate-x(0);
+}

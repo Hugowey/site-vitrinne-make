@@ -1,13 +1,3 @@
-// Dados dos Produtos
-const products = [
-    { id: 1, name: "Batom Matte Luxo Velvet", category: "Batons", price: 89.90, desc: "Acabamento aveludado de longa duração. Cor intensa em uma única passada.", img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=800" },
-    { id: 2, name: "Batom Liquid Glow Rouge", category: "Batons", price: 119.90, desc: "Brilho intenso com hidratação profunda. Perfeito para eventos noturnos.", img: "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&q=80&w=800" },
-    { id: 3, name: "Base Fluida HD Couture", category: "Bases", price: 219.00, desc: "Cobertura invisível com efeito pele real. Resistente à água e suor.", img: "https://images.unsplash.com/photo-1631730359585-38a4935cbb6e?auto=format&fit=crop&q=80&w=800" },
-    { id: 4, name: "Base Sérum Skin Tint", category: "Bases", price: 189.00, desc: "Leveza de um sérum com a cobertura de uma base premium.", img: "https://images.unsplash.com/photo-1599733589046-10c005739ef0?auto=format&fit=crop&q=80&w=800" },
-    { id: 5, name: "Paleta Sombras Nude", category: "Olhos", price: 245.00, desc: "12 tons ultra pigmentados para looks sofisticados.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=800" },
-    { id: 6, name: "Sérum Iluminador Vit-C", category: "Skincare", price: 159.90, desc: "Brilho natural e proteção antioxidante para sua pele.", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800" }
-];
-
 let cart = JSON.parse(localStorage.getItem('vitrinne_cart')) || [];
 let currentModalQty = 1;
 let selectedProduct = null;

@@ -2,6 +2,9 @@
 body {
     font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
+    /* Rosa bem claro (pastel) que suaviza para o branco */
+    background: linear-gradient(to bottom, #FFF0F5 0%, #ffffff 600px);
+    background-attachment: fixed; /* Opcional: mantém o fundo fixo enquanto rola */
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -10,9 +13,9 @@ body {
 
 .filter-btn {
     padding: 10px 25px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #db35a9;
     border-radius: 999px;
-    background: white;
+    background: rgb(255, 255, 255);
     font-size: 14px;
     white-space: nowrap;
     transition: all 0.3s ease;
@@ -54,4 +57,42 @@ body {
 
 #cart-drawer.open #cart-content {
     transform: translate-x(0);
+}
+/* Fundo suave com degradê sutil para o topo do site */
+body {
+    background: linear-gradient(to bottom, #fff5f8 0%, #ffffff 500px);
+}
+
+/* Animação suave para o badge */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Ajuste para o título não ficar muito "seco" */
+.font-playfair {
+    letter-spacing: -0.02em;
+}
+/* Garante que o scroll comece centralizado ou permita rolagem correta */
+.no-scrollbar {
+    display: flex;
+    justify-content: flex-start; /* Padrão para mobile */
+}
+
+@media (min-width: 768px) {
+    .no-scrollbar {
+        justify-content: center; /* Centraliza apenas em telas maiores */
+    }
+}
+
+/* Deixa os botões de filtro com um toque mais suave */
+.filter-btn {
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.filter-btn:active {
+    transform: scale(0.95);
 }

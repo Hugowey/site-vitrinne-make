@@ -226,7 +226,9 @@
                             
                             <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-100">
                                 <p class="text-xs text-amber-700 leading-relaxed">
-                                    📍 Taxa de entrega fixa: <b>R$ 7,00</b>
+                                    📍 <b>Taxa de entrega fixa Para dentro da região: </b><b>R$ 7,00</b>
+
+                                    <b>Para entregas Fora da Região: consulte o valor pelo WhatsApp</b> 
                                 </p>
                             </div>
                         </div>
@@ -338,19 +340,19 @@
             if(deliveryMethod === 'entrega' && !address) return showToast("Digite seu endereço.");
 
             let msg = `*Novo Pedido - Vitrinne Make*\n\n`;
-            msg += `👤 *Cliente:* ${name}\n`;
-            msg += `📍 *Método:* ${deliveryMethod === 'entrega' ? 'Entrega (Taxa R$ 7,00)' : 'Retirada na Loja'}\n`;
+            msg += ` *Cliente:* ${name}\n\n`;
+            msg += ` *Método:* ${deliveryMethod === 'entrega' ? 'Entrega (Taxa R$ 7,00)' : 'Retirada na Loja'}\n`;
             
             if(deliveryMethod === 'entrega') {
-                msg += `🏠 *Endereço:* ${address}\n`;
+                msg += ` *Endereço:* ${address}\n`;
             }
 
-            msg += `\n*🛍️ Ítens do Pedido:*\n`;
+            msg += `\n*Ítens do Pedido:*\n`;
             cart.forEach(i => {
                 msg += `• ${i.qty}x ${i.name} - R$ ${(i.price * i.qty).toFixed(2)}\n`;
             });
 
-            msg += `\n*💰 Valor Total: ${document.getElementById('cart-total').innerText}*`;
+            msg += `\n* Valor Total: ${document.getElementById('cart-total').innerText}*`;
 
             window.open(`https://wa.me/5535991982235?text=${encodeURIComponent(msg)}`);
         }

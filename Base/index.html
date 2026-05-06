@@ -107,32 +107,31 @@
     </header>
 
     <section class="pt-32 pb-16 px-6">
-    <div class="container mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pink-100 shadow-sm mb-8 animate-bounce-slow">
-            <span class="text-[#FF4FA3]">✨</span>
-            <span class="text-[12px] font-bold uppercase tracking-[0.2em] text-[#FF4FA3]">Novas Promoções Adiquira já!</span>
-        </div>
+        <div class="container mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pink-100 shadow-sm mb-8 animate-bounce-slow">
+                <span class="text-[#FF4FA3]">✨</span>
+                <span class="text-[12px] font-bold uppercase tracking-[0.2em] text-[#FF4FA3]">Novas Promoções Adiquira já!</span>
+            </div>
 
-        <h2 class="text-5xl md:text-7xl font-playfair leading-tight mb-6 bg-gradient-to-r from-[#FF4FA3] via-[#A855F7] to-[#FF4FA3] bg-clip-text text-transparent font-bold">
-            Realce Sua Beleza Natural
+            <h2 class="text-5xl md:text-7xl font-playfair leading-tight mb-6 bg-gradient-to-r from-[#FF4FA3] via-[#A855F7] to-[#FF4FA3] bg-clip-text text-transparent font-bold">
+                Realce Sua Beleza Natural
             </h2>
 
-          <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-            Descubra produtos de maquiagem premium que celebram sua essência única com elegância e sofisticação.
-         </p>
-          </div>
-          </section>
+            <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+                Descubra produtos de maquiagem premium que celebram sua essência única com elegância e sofisticação.
+            </p>
+        </div>
         
         <div class="container mx-auto px-6 mb-12">
-    <div class="flex justify-center items-center gap-3 overflow-x-auto pb-4 no-scrollbar">
-        <button class="filter-btn active" onclick="filterProducts('Todos', this)">Todos</button>
-        <button class="filter-btn" onclick="filterProducts('Pele', this)">Pele</button>
-        <button class="filter-btn" onclick="filterProducts('Olhos', this)">Olhos</button>
-        <button class="filter-btn" onclick="filterProducts('SkinCare', this)">SkinCare</button>
-        <button class="filter-btn" onclick="filterProducts('Acessórios', this)">Acessórios</button>
-        <button class="filter-btn" onclick="filterProducts('Boca', this)">Boca</button>
-    </div>
-</div>
+            <div class="flex justify-center items-center gap-3 overflow-x-auto pb-4 no-scrollbar">
+                <button class="filter-btn active" onclick="filterProducts('Todos', this)">Todos</button>
+                <button class="filter-btn" onclick="filterProducts('Pele', this)">Pele</button>
+                <button class="filter-btn" onclick="filterProducts('Olhos', this)">Olhos</button>
+                <button class="filter-btn" onclick="filterProducts('SkinCare', this)">SkinCare</button>
+                <button class="filter-btn" onclick="filterProducts('Acessórios', this)">Acessórios</button>
+                <button class="filter-btn" onclick="filterProducts('Boca', this)">Boca</button>
+            </div>
+        </div>
     </section>
 
     <section class="px-6 container mx-auto pb-20">
@@ -148,10 +147,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                 </button>
                 <button id="next-btn" onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-all z-10 text-black">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                 <path d="m9 18 6-6-6-6"/>
-                </svg>
-                 </button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
                 <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
             </div>
             <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
@@ -227,10 +224,14 @@
                             <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-100">
                                 <p class="text-xs text-amber-700 leading-relaxed">
                                     📍 <b>Taxa de entrega fixa Para dentro da região: </b><b>R$ 7,00</b>
-
-                                    <b>Para entregas Fora da Região: consulte o valor pelo WhatsApp</b> 
+                                    <br><b>Para entregas Fora da Região: consulte o valor pelo WhatsApp</b> 
                                 </p>
                             </div>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold uppercase text-gray-400 mb-2 block tracking-widest">Detalhes / Observações</label>
+                            <textarea id="order-details" rows="2" class="w-full bg-gray-100 border-none rounded-xl p-4 focus:ring-2 focus:ring-[#FF4FA3] transition-all" placeholder="Ex: numeração da base, cores dos laços, observações específicas..."></textarea>
                         </div>
                     </div>
 
@@ -248,13 +249,109 @@
 
     <script>
         const products = [
-            { id: 1, name: "Po Banana", category: "Pele", price: 15.00, desc: "Po Banana suave e natural, perfeito para fixar produtos.", img: "imagens/Pobanana.jpeg", imgs: ["imagens/Pobanana.jpeg"] },
-            { id: 2, name: "Touca de Setim", category: "Acessórios", price: 15.00, desc: "Macies e conforto, ajuda a não embaraçar o cabelo.", img: "imagens/toucaSetin.jpeg", imgs: ["imagens/toucaSetin.jpeg"] },
-            { id: 3, name: "Ventilador Porquinho Portátil", category: "Acessórios", price: 15.00, desc: "Secador ultra rápido de aplicações feitas na pele.", img: "imagens/VentiladorPor.jpeg", imgs: ["imagens/VentiladorPor.jpeg"] },
-            { id: 4, name: "Laço Para Cabelo", category: "Acessórios", price: 10.00, desc: "Laço super macio.", img: "imagens/lacoCinza.jpeg", imgs: ["imagens/lacoCinza.jpeg", "imagens/lacoMarrom.jpeg"] },
-            { id: 5, name: "Laço de Veludo", category: "Acessórios", price: 10.00, desc: "Laço super macio.", img: "imagens/lacoVeludoCinza.jpeg", imgs: ["imagens/lacoVeludoCinza.jpeg", "imagens/lacoVeludoBeje.jpeg"] },
-            { id: 6, name: "Esponja Mango", category: "Acessórios", price: 10.00, desc: "Esponja para pele.", img: "imagens/esponjaMango.jpeg", imgs: ["imagens/esponjaMango.jpeg"] },
-        ];
+            { id: 1, name: "Po Banana",
+             category: "Pele", price: 15.00, 
+             desc: "Po Banana suave e natural, perfeito para fixar produtos.",
+              img: "imagens/Pele/Pobanana.jpeg", imgs: ["imagens/Pele/Pobanana.jpeg"] },
+           
+            { id: 2, name: "Touca de Setim", 
+            category: "Acessórios", price: 15.00, 
+            desc: "Macies e conforto, ajuda a não embaraçar o cabelo.", 
+            img: "imagens/Acessórios/toucaSetin.jpeg", imgs: ["imagens/Acessórios/toucaSetin.jpeg"] },
+
+            { id: 3, name: "Ventilador Porquinho Portátil", 
+            category: "Acessórios", price: 15.00, 
+            desc: "Secador ultra rápido de aplicações feitas na pele.", 
+            img: "imagens/Acessórios/VentiladorPor.jpeg", 
+            imgs: ["imagens/Acessórios/VentiladorPor.jpeg"] },
+
+            { id: 4, name: "Laço Para Cabelo", 
+            category: "Acessórios", 
+            price: 10.00, desc: "Laço super macio.", 
+            img: "imagens/Acessórios/lacoCinza.jpeg",
+             imgs: ["imagens/Acessórios/lacoCinza.jpeg", "imagens/Acessórios/lacoMarrom.jpeg"] },
+
+            { id: 5, name: "Laço de Veludo", 
+            category: "Acessórios", price: 10.00, desc: "Laço super macio.", 
+            img: "imagens/Acessórios/lacoVeludoCinza.jpeg", 
+            imgs: ["imagens/Acessórios/lacoVeludoCinza.jpeg", "imagens/lacoVeludoBeje.jpeg"] },
+
+            { id: 6, name: "Esponja Mango", 
+            category: "Acessórios", price: 10.00, 
+            desc: "Esponja para pele.", 
+            img: "imagens/Acessórios/esponjaMango.jpeg", imgs: ["imagens/esponjaMango.jpeg"] },
+
+            { id: 7, name: "Escova Raquete", 
+            category: "Acessórios", 
+            price: 10.00, desc: "Escova Raquete feita para todos os tipos de cabelo!..",
+             img: "imagens/Acessórios/escovaRaquete.jpeg", imgs: ["imagens/Acessórios/escovaRaquete.jpeg"] },
+            
+            { id: 8, name: "Kite Piranha + Esponja + Modelador de Caichos", 
+            category: "Acessórios", 
+            price: 10.00, desc: "Kit completo para tudo oque você precisa no seu dia a dia!..", 
+            img: "imagens/Acessórios/KitEsponjaRoxo.jpeg", imgs: ["imagens/Acessórios/KitEsponjaRoxo.jpeg"] },
+           
+            { id: 9, name: "Base Fluida Dapop.",
+             category: "Pele", 
+             price: 15.00, desc: "Base Dapop. fluida e de alta qualidade, para todos os tipos de pele em todas as numerações!..", 
+             img: "imagens/Pele/basePop.jpeg", imgs: ["imagens/Pele/basePop.jpeg"] },
+
+            { id: 10, name: "Gel Secativo Ant Acne.",
+             category: "Pele", 
+             price: 10.00, desc: "Gel Secativo para todos os tipos de Pele, Ajuda na prevenção de cravos e espinhas e muito mais!..", 
+             img: "imagens/Pele/GelSecativoAntAcne.jpeg", imgs: ["imagens/Pele/GelSecativoAntAcne.jpeg"] },
+
+            { id: 11, name: "Gloss Chaveiro cute Sarah's Beauty MarshMallon ",
+             category: "Boca", 
+             price: 10.00, desc: "Gel Secativo para todos os tipos de Pele, Ajuda na prevenção de cravos e espinhas e muito mais!", 
+             img: "imagens/Boca/GlossMarshMallonChaveiro.jpeg", imgs: ["imagens/Boca/GlossMarshMallonChaveiro.jpeg"] },
+
+            { id: 12, name: "Escova Polvo para Cabelos cacheados",
+             category: "Acessórios", 
+             price: 10.00, desc: "Escova Polvo perfeita para cabelos cacheados ou ondulados, não embaraça e não danifica os cachos!", 
+             img: "imagens/Acessórios/EscovaPolvoCabelosCah.jpeg", imgs: ["imagens/Acessórios/EscovaPolvoCabelosCah.jpeg"] },
+       
+            { id: 13, name: "Gloss de Maça",
+             category: "Boca", 
+             price: 15.00, desc: "Gloss de Maça com tom vermelho suave perfeito para o dia a dia, com gostinho de maça!", 
+             img: "imagens/Boca/GlossMaça.jpeg", imgs: ["imagens/Boca/GlossMaça.jpeg"] },
+
+            { id: 13, name: "Agua Termal PHÁLLEBEAUTY",
+             category: "SkinCare", 
+             price: 15.00, desc: "Agua Termal PHÁLLEBEAUTY Premium de altissima qualidade para todos os tipos de pele, garante macies e rejuvelhecimento para a pele!", 
+             img: "imagens/SkinCare/AguaTermalPh.jpeg", imgs: ["imagens/SkinCarre/AguaTermalPh.jpeg"] },
+
+            { id: 14, name: "Rolo para pele Jade Premium",
+             category: "SkinCare", 
+             price: 15.00, desc: "Rolo Facial para Massagear e alisar a sua pele feito em Jade, trazendo mais conforto e beleza para seu rosto.", 
+             img: "imagens/SkinCare/RoloJade.jpeg", imgs: ["imagens/SkinCare/RoloJade.jpeg"] },
+
+            { id: 15, name: "Caneta Contorno para Sombrancelhas Dupla-Ponta",
+             category: "SkinCare", 
+             price: 15.00, desc: "Caneta contorno de Sombrancelhas perfeita para preenchimento exato das suas sombrancelhas e afins!", 
+             img: "imagens/SkinCare/ContornoSombrancelhas.jpeg", imgs: ["imagens/SkinCare/ContornoSombrancelhas.jpeg"] },
+
+            { id: 16, name: "Sabonete Intimo Soul - Morango",
+             category: "Pele", 
+             price: 15.00, desc: "Sabonete intimo com cheirinho de Morango garante sensação de leveza e higiene 24 horas!", 
+             img: "imagens/Pele/SaboneteIntimoMorango.jpeg", imgs: ["imagens/Pele/SaboneteIntimoMorango.jpeg"] },
+
+            { id: 17, name: "Esponja Cogumelo - Varias cores",
+             category: "Acessórios", 
+             price: 15.00, desc: "Esponja Cogumelo para aplicações facial, diversas cores!", 
+             img: "imagens/Acessórios/EsponjaCogumelo.jpeg", imgs: ["imagens/Acessórios/EsponjaCogumelo.jpeg"] },
+
+            { id: 17, name: "Mascara de Cilios",
+             category: "Olhos", 
+             price: 15.00, desc: "Mascara de Cilios perfeita para realce dos Clilios!", 
+             img: "imagens/Olhos/mascaraCilios.jpeg", imgs: ["imagens/Olhos/mascaraCilios.jpeg"] },
+            
+            { id: 18, name: "Sabonete Intimo Soul - Petalas de Rosa",
+             category: "Pele", 
+             price: 15.00, desc: "Sabonete intimo com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
+             img: "imagens/Pele/SaboneteIntPetalasRosa.jpeg", imgs: ["imagens/Pele/SaboneteIntPetalasRosa.jpeg"] },
+
+            ];
 
         let cart = JSON.parse(localStorage.getItem('vitrinne_cart')) || [];
         let deliveryMethod = '';
@@ -300,7 +397,6 @@
             renderProducts(filtered);
         }
 
-        // LÓGICA DE NAVEGAÇÃO ENTRE ETAPAS (SLIDE)
         function goToStep(step) {
             if(step === 2 && cart.length === 0) {
                 showToast("Sua sacola está vazia!");
@@ -334,17 +430,23 @@
         function checkout() {
             const name = document.getElementById('customer-name').value;
             const address = document.getElementById('customer-address').value;
+            const details = document.getElementById('order-details').value; // Captura o campo de detalhes
 
             if(!name) return showToast("Por favor, digite seu nome.");
             if(!deliveryMethod) return showToast("Escolha o tipo de retirada.");
             if(deliveryMethod === 'entrega' && !address) return showToast("Digite seu endereço.");
 
             let msg = `*Novo Pedido - Vitrinne Make*\n\n`;
-            msg += ` *Cliente:* ${name}\n\n`;
+            msg += ` *Cliente:* ${name}\n`;
             msg += ` *Método:* ${deliveryMethod === 'entrega' ? 'Entrega (Taxa R$ 7,00)' : 'Retirada na Loja'}\n`;
             
             if(deliveryMethod === 'entrega') {
                 msg += ` *Endereço:* ${address}\n`;
+            }
+
+            // Adiciona detalhes se preenchido
+            if(details.trim() !== "") {
+                msg += ` *Detalhes/Obs:* ${details}\n`;
             }
 
             msg += `\n*Ítens do Pedido:*\n`;
@@ -352,12 +454,11 @@
                 msg += `• ${i.qty}x ${i.name} - R$ ${(i.price * i.qty).toFixed(2)}\n`;
             });
 
-            msg += `\n* Valor Total: ${document.getElementById('cart-total').innerText}*`;
+            msg += `\n*Valor Total: ${document.getElementById('cart-total').innerText}*`;
 
             window.open(`https://wa.me/5535991982235?text=${encodeURIComponent(msg)}`);
         }
 
-        // FUNÇÕES DE SUPORTE (MODAL E CARRINHO)
         let activeProduct = null;
         let currentSlide = 0;
         let modalQty = 1;
@@ -424,11 +525,11 @@
             if(d.classList.contains('hidden')) {
                 goToStep(1); 
                 d.classList.remove('hidden');
-                body.classList.add('cart-open'); // Trava o scroll
+                body.classList.add('cart-open');
                 setTimeout(() => d.classList.add('open'), 10);
             } else {
                 d.classList.remove('open');
-                body.classList.remove('cart-open'); // Libera o scroll
+                body.classList.remove('cart-open');
                 setTimeout(() => d.classList.add('hidden'), 500);
             }
         }

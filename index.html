@@ -250,15 +250,15 @@
     <script>
         const products = [
             { id: 1, name: "Po Banana",
-             category: "pele", price: 15.00, 
+             category: "pele", price: 10.00, 
              desc: "Po Banana suave e natural, perfeito para fixar produtos.",
               img: "imagens/pele/pobanana.jpeg", imgs: ["imagens/pele/pobanana.jpeg"] },
            
             { id: 2, name: "Touca de Setim", 
-             category: "acessorios", price: 15.00, 
+             category: "acessorios", price: 10.00, 
              desc: "Macies e conforto, ajuda a não embaraçar o cabelo.", 
              img: "imagens/acessorios/toucasetin.jpeg",
-             imgs: ["imagens/acessorios/toucaSetin.jpeg"] },
+             imgs: ["imagens/acessorios/toucasetin.jpeg"] },
 
             { id: 3, name: "Ventilador Porquinho Portátil", 
              category: "acessorios", price: 15.00, 
@@ -278,20 +278,22 @@
              imgs: ["imagens/acessorios/lacoveludocinza.jpeg", "imagens/acessorios/lacoveludobeje.jpeg"] },
 
             { id: 6, name: "Esponja Mango", 
-            category: "acessorios", price: 10.00, 
+            category: "acessorios", 
+            price: 10.00, 
             desc: "Esponja para pele.", 
             img: "imagens/acessorios/esponjamango.jpeg", imgs: ["imagens/acessorios/esponjamango.jpeg"] },
 
             { id: 7, name: "Escova Raquete", 
             category: "acessorios", 
             price: 10.00, desc: "Escova Raquete feita para todos os tipos de cabelo!..",
-             img: "imagens/acessorios/escovaRaquete.jpeg", imgs: ["imagens/acessorios/escovaRaquete.jpeg"] },
+             img: "imagens/acessorios/escovaraquete.jpeg", imgs: ["imagens/acessorios/escovaraquete.jpeg"] },
             
-            { id: 8, name: "Kite Piranha + Esponja + Modelador de Caichos", 
+            { id: 8, name: "Kite Piranha + Esponja + Modelador de Cachos", 
             category: "acessorios", 
             price: 10.00, desc: "Kit completo para tudo oque você precisa no seu dia a dia!..", 
             img: "imagens/acessorios/kitesponjaroxo.jpeg",
-             imgs: ["imagens/acessorios/kitesponjaroxo.jpeg"] },
+             imgs: ["imagens/acessorios/kitesponjaroxo.jpeg"]
+             },
            
             { id: 9, name: "Base Fluida Dapop.",
              category: "pele", 
@@ -306,57 +308,69 @@
             { id: 11, name: "Gloss Chaveiro cute Sarah's Beauty MarshMallon ",
              category: "boca", 
              price: 10.00, desc: "Gel Secativo para todos os tipos de pele, Ajuda na prevenção de cravos e espinhas e muito mais!", 
-             img: "imagens/boca/glossmarshchvChaveiro.jpeg", imgs: ["imagens/boca/glossmarshchvChaveiro.jpeg"] },
+             img: "imagens/boca/glossmarshchv.jpeg", 
+             imgs: ["imagens/boca/glossmarshchv.jpeg"] },
 
             { id: 12, name: "Escova Polvo para Cabelos cacheados",
              category: "acessorios", 
              price: 10.00, desc: "Escova Polvo perfeita para cabelos cacheados ou ondulados, não embaraça e não danifica os cachos!", 
-             img: "imagens/acessorios/escovapolvocabeloscah.jpeg", imgs: ["imagens/acessorios/escovapolvocabeloscah.jpeg"] },
+             img: "imagens/acessorios/escovapolvocabeloscah.jpeg", 
+             imgs: ["imagens/acessorios/escovapolvocabeloscah.jpeg"] },
        
             { id: 13, name: "Gloss de Maça",
              category: "boca", 
-             price: 15.00, desc: "Gloss de Maça com tom vermelho suave perfeito para o dia a dia, com gostinho de maça!", 
+             price: 10.00, desc: "Gloss de Maça com tom vermelho suave perfeito para o dia a dia, com gostinho de maça!", 
              img: "imagens/boca/glossmaca.jpeg", imgs: ["imagens/boca/glossmaca.jpeg"] },
 
-            { id: 13, name: "Agua Termal PHÁLLEBEAUTY",
+            { id: 14, name: "Agua Termal PHÁLLEBEAUTY",
              category: "skincare", 
-             price: 15.00, desc: "Agua Termal PHÁLLEBEAUTY Premium de altissima qualidade para todos os tipos de pele, garante macies e rejuvelhecimento para a pele!", 
-             img: "imagens/skincare/aguatermalph.jpeg", imgs: ["imagens/SkinCarre/aguatermalph.jpeg"] },
+             price: 10.00, desc: "Agua Termal PHÁLLEBEAUTY Premium de altissima qualidade para todos os tipos de pele, garante macies e rejuvelhecimento para a pele!", 
+             img: "imagens/skincare/aguatermalph.jpeg", imgs: ["imagens/skincare/aguatermalph.jpeg"] },
 
-            { id: 14, name: "Rolo para pele Jade Premium",
+            { id: 15, name: "Rolo para pele Jade Premium",
              category: "skincare", 
              price: 15.00, desc: "Rolo Facial para Massagear e alisar a sua pele feito em Jade, trazendo mais conforto e beleza para seu rosto.", 
              img: "imagens/skincare/rolodejade.jpeg", imgs: ["imagens/skincare/rolodejade.jpeg"] },
 
-            { id: 15, name: "Caneta Contorno para Sombrancelhas Dupla-Ponta",
+            { id: 16, name: "Caneta Contorno para Sombrancelhas Dupla-Ponta",
              category: "skincare", 
              price: 15.00, desc: "Caneta contorno de Sombrancelhas perfeita para preenchimento exato das suas sombrancelhas e afins!", 
              img: "imagens/skincare/contsombranc.jpeg", imgs: ["imagens/skincare/contsombranc.jpeg"] },
 
-            { id: 16, name: "Sabonete Intimo Soul - Morango",
+            { id: 17, name: "Sabonete Intimo Soul - Morango",
              category: "pele", 
-             price: 15.00, desc: "Sabonete intimo com cheirinho de Morango garante sensação de leveza e higiene 24 horas!", 
+             price: 10.00, desc: "Sabonete intimo com cheirinho de Morango garante sensação de leveza e higiene 24 horas!", 
              img: "imagens/pele/saboneteintmorango.jpeg", imgs: ["imagens/pele/saboneteintmorango.jpeg"] },
 
-            { id: 17, name: "Esponja Cogumelo - Varias cores",
+            { id: 18, name: "Esponja Cogumelo - Varias cores",
              category: "acessorios", 
-             price: 15.00, desc: "Esponja Cogumelo para aplicações facial, diversas cores!", 
+             price: 10.00, desc: "Esponja Cogumelo para aplicações facial, diversas cores!", 
              img: "imagens/acessorios/esponjacogumelo.jpeg", imgs: ["imagens/acessorios/esponjacogumelo.jpeg"] },
 
-            { id: 17, name: "Mascara de Cilios",
+            { id: 19, name: "Mascara de Cilios",
              category: "olhos", 
-             price: 15.00, desc: "Mascara de Cilios perfeita para realce dos Clilios!", 
+             price: 10.00, desc: "Mascara de Cilios perfeita para realce dos Clilios!", 
              img: "imagens/olhos/mascaracilios.jpeg", imgs: ["imagens/olhos/mascaracilios.jpeg"] },
             
-            { id: 18, name: "Sabonete Intimo Soul - Petalas de Rosa",
+            { id: 20, name: "Sabonete Intimo Soul - Petalas de Rosa",
              category: "pele", 
-             price: 15.00, desc: "Sabonete intimo com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
+             price: 10.00, desc: "Sabonete intimo com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
              img: "imagens/pele/saboneteintptrosa.jpeg", imgs: ["imagens/pele/saboneteintptrosa.jpeg"] },
 
-            { id: 19, name: "Bruma Iluminadora",
+            { id: 21, name: "Bruma Iluminadora",
              category: "skincare", 
-             price: 15.00, desc: "Bruma Iluminadora com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
+             price: 10.00, desc: "Bruma Iluminadora com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
              img: "imagens/skincare/brumailuminadora.jpeg", imgs: ["imagens/skincare/brumailuminadora.jpeg"] },
+
+            { id: 22, name: "Paleta de Sombras",
+             category: "Olhos", 
+             price: 15.00, desc: "Paleta de Sombras com diversas cores para realce dos olhos!", 
+             img: "imagens/olhos/paletadesombras.jpeg", imgs: ["imagens/olhos/paletadesombras.jpeg"] },
+
+            { id: 23, name: "Esfoliante Labial - Morango",
+             category: "Olhos", 
+             price: 10.00, desc: "Esfoliante Labial com cheirinho de Morango garante sensação de leveza e higiene 24 horas!", 
+             img: "imagens/olhos/esfoliantelbmorango.jpeg", imgs: ["imagens/olhos/esfoliantelbmorango.jpeg"] },
 
 
 

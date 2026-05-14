@@ -252,7 +252,7 @@
             { id: 1, name: "Po Banana",
              category: "pele", price: 10.00, 
              desc: "Po Banana suave e natural, perfeito para fixar produtos.",
-              img: "imagens/pele/pobanana.jpeg", imgs: ["imagens/pele/pobanana.jpeg"] },
+              img: "imagens/pele/teste.jpeg", imgs: ["imagens/pele/teste.jpeg"] },
            
             { id: 2, name: "Touca de Setim", 
              category: "acessorios", price: 10.00, 
@@ -292,8 +292,7 @@
             category: "acessorios", 
             price: 10.00, desc: "Kit completo para tudo oque você precisa no seu dia a dia!..", 
             img: "imagens/acessorios/kitesponjaroxo.jpeg",
-             imgs: ["imagens/acessorios/kitesponjaroxo.jpeg"]
-             },
+             imgs: ["imagens/acessorios/kitesponjaroxo.jpeg"]},
            
             { id: 9, name: "Base Fluida Dapop.",
              category: "pele", 
@@ -307,7 +306,7 @@
 
             { id: 11, name: "Gloss Chaveiro cute Sarah's Beauty MarshMallon ",
              category: "boca", 
-             price: 10.00, desc: "Gel Secativo para todos os tipos de pele, Ajuda na prevenção de cravos e espinhas e muito mais!", 
+             price: 10.00, desc: "Gloss Chaveiro com cheirinho de MarshMallon, super fofo e prático para levar para todos os lugares!", 
              img: "imagens/boca/glossmarshchv.jpeg", 
              imgs: ["imagens/boca/glossmarshchv.jpeg"] },
 
@@ -373,9 +372,10 @@
              img: "imagens/boca/esfoliantelbmorango.jpeg", imgs: ["imagens/boca/esfoliantelbmorango.jpeg"] },
            
              { id: 24, name: "Mascara Facial de Carvão Ativado",
-             category: "boca", 
+             category: "pele", 
              price: 12.00, desc: "Mascara Facial de Carvão Ativado para limpeza profunda!", 
-             img: "imagens/boca/mascarafacialcarv.jpeg", imgs: ["imagens/boca/mascarafacialcarv.jpeg"] },
+             img: "imagens/pele/mascarafacialcarv.jpeg", 
+             imgs: ["imagens/pele/mascarafacialcarv.jpeg"] },
 
 
 
@@ -598,7 +598,7 @@
             const container = document.getElementById('cart-items');
             const totalLabel = document.getElementById('cart-total');
             const countLabel = document.getElementById('cart-count');
-            
+         
             const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
             countLabel.innerText = totalItems;
             

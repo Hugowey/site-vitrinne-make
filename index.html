@@ -125,11 +125,11 @@
         <div class="container mx-auto px-6 mb-12">
             <div class="flex justify-center items-center gap-3 overflow-x-auto pb-4 no-scrollbar">
                 <button class="filter-btn active" onclick="filterProducts('Todos', this)">Todos</button>
-                <button class="filter-btn" onclick="filterProducts('Pele', this)">Pele</button>
-                <button class="filter-btn" onclick="filterProducts('Olhos', this)">Olhos</button>
-                <button class="filter-btn" onclick="filterProducts('SkinCare', this)">SkinCare</button>
-                <button class="filter-btn" onclick="filterProducts('Acessórios', this)">Acessórios</button>
-                <button class="filter-btn" onclick="filterProducts('Boca', this)">Boca</button>
+                <button class="filter-btn" onclick="filterProducts('pele', this)">pele</button>
+                <button class="filter-btn" onclick="filterProducts('olhos', this)">olhos</button>
+                <button class="filter-btn" onclick="filterProducts('skincare', this)">skincare</button>
+                <button class="filter-btn" onclick="filterProducts('acessorios', this)">acessorios</button>
+                <button class="filter-btn" onclick="filterProducts('boca', this)">boca</button>
             </div>
         </div>
     </section>
@@ -250,106 +250,106 @@
     <script>
         const products = [
             { id: 1, name: "Po Banana",
-             category: "Pele", price: 15.00, 
+             category: "pele", price: 15.00, 
              desc: "Po Banana suave e natural, perfeito para fixar produtos.",
-              img: "imagens/Pele/Pobanana.jpeg", imgs: ["imagens/Pele/Pobanana.jpeg"] },
+              img: "imagens/pele/Pobanana.jpeg", imgs: ["imagens/pele/Pobanana.jpeg"] },
            
             { id: 2, name: "Touca de Setim", 
-            category: "Acessórios", price: 15.00, 
+            category: "acessorios", price: 15.00, 
             desc: "Macies e conforto, ajuda a não embaraçar o cabelo.", 
-            img: "imagens/Acessórios/toucaSetin.jpeg", imgs: ["imagens/Acessórios/toucaSetin.jpeg"] },
+            img: "imagens/acessorios/toucaSetin.jpeg", imgs: ["imagens/acessorios/toucaSetin.jpeg"] },
 
             { id: 3, name: "Ventilador Porquinho Portátil", 
-            category: "Acessórios", price: 15.00, 
+            category: "acessorios", price: 15.00, 
             desc: "Secador ultra rápido de aplicações feitas na pele.", 
-            img: "imagens/Acessórios/VentiladorPor.jpeg", 
-            imgs: ["imagens/Acessórios/VentiladorPor.jpeg"] },
+            img: "imagens/acessorios/VentiladorPor.jpeg", 
+            imgs: ["imagens/acessorios/VentiladorPor.jpeg"] },
 
             { id: 4, name: "Laço Para Cabelo", 
-            category: "Acessórios", 
+            category: "acessorios", 
             price: 10.00, desc: "Laço super macio.", 
-            img: "imagens/Acessórios/lacoCinza.jpeg",
-             imgs: ["imagens/Acessórios/lacoCinza.jpeg", "imagens/Acessórios/lacoMarrom.jpeg"] },
+            img: "imagens/acessorios/lacoCinza.jpeg",
+             imgs: ["imagens/acessorios/lacoCinza.jpeg", "imagens/acessorios/lacoMarrom.jpeg"] },
 
             { id: 5, name: "Laço de Veludo", 
-            category: "Acessórios", price: 10.00, desc: "Laço super macio.", 
-            img: "imagens/Acessórios/lacoVeludoCinza.jpeg", 
-            imgs: ["imagens/Acessórios/lacoVeludoCinza.jpeg", "imagens/lacoVeludoBeje.jpeg"] },
+            category: "acessorios", price: 10.00, desc: "Laço super macio.", 
+            img: "imagens/acessorios/lacoVeludoCinza.jpeg", 
+            imgs: ["imagens/acessorios/lacoVeludoCinza.jpeg", "imagens/lacoVeludoBeje.jpeg"] },
 
             { id: 6, name: "Esponja Mango", 
-            category: "Acessórios", price: 10.00, 
+            category: "acessorios", price: 10.00, 
             desc: "Esponja para pele.", 
-            img: "imagens/Acessórios/esponjaMango.jpeg", imgs: ["imagens/esponjaMango.jpeg"] },
+            img: "imagens/acessorios/esponjaMango.jpeg", imgs: ["imagens/esponjaMango.jpeg"] },
 
             { id: 7, name: "Escova Raquete", 
-            category: "Acessórios", 
+            category: "acessorios", 
             price: 10.00, desc: "Escova Raquete feita para todos os tipos de cabelo!..",
-             img: "imagens/Acessórios/escovaRaquete.jpeg", imgs: ["imagens/Acessórios/escovaRaquete.jpeg"] },
+             img: "imagens/acessorios/escovaRaquete.jpeg", imgs: ["imagens/acessorios/escovaRaquete.jpeg"] },
             
             { id: 8, name: "Kite Piranha + Esponja + Modelador de Caichos", 
-            category: "Acessórios", 
+            category: "acessorios", 
             price: 10.00, desc: "Kit completo para tudo oque você precisa no seu dia a dia!..", 
-            img: "imagens/Acessórios/KitEsponjaRoxo.jpeg", imgs: ["imagens/Acessórios/KitEsponjaRoxo.jpeg"] },
+            img: "imagens/acessorios/KitEsponjaRoxo.jpeg", imgs: ["imagens/acessorios/KitEsponjaRoxo.jpeg"] },
            
             { id: 9, name: "Base Fluida Dapop.",
-             category: "Pele", 
+             category: "pele", 
              price: 15.00, desc: "Base Dapop. fluida e de alta qualidade, para todos os tipos de pele em todas as numerações!..", 
-             img: "imagens/Pele/basePop.jpeg", imgs: ["imagens/Pele/basePop.jpeg"] },
+             img: "imagens/pele/basePop.jpeg", imgs: ["imagens/pele/basePop.jpeg"] },
 
             { id: 10, name: "Gel Secativo Ant Acne.",
-             category: "Pele", 
-             price: 10.00, desc: "Gel Secativo para todos os tipos de Pele, Ajuda na prevenção de cravos e espinhas e muito mais!..", 
-             img: "imagens/Pele/GelSecativoAntAcne.jpeg", imgs: ["imagens/Pele/GelSecativoAntAcne.jpeg"] },
+             category: "pele", 
+             price: 10.00, desc: "Gel Secativo para todos os tipos de pele, Ajuda na prevenção de cravos e espinhas e muito mais!..", 
+             img: "imagens/pele/GelSecativoAntAcne.jpeg", imgs: ["imagens/pele/GelSecativoAntAcne.jpeg"] },
 
             { id: 11, name: "Gloss Chaveiro cute Sarah's Beauty MarshMallon ",
-             category: "Boca", 
-             price: 10.00, desc: "Gel Secativo para todos os tipos de Pele, Ajuda na prevenção de cravos e espinhas e muito mais!", 
-             img: "imagens/Boca/GlossMarshMallonChaveiro.jpeg", imgs: ["imagens/Boca/GlossMarshMallonChaveiro.jpeg"] },
+             category: "boca", 
+             price: 10.00, desc: "Gel Secativo para todos os tipos de pele, Ajuda na prevenção de cravos e espinhas e muito mais!", 
+             img: "imagens/boca/GlossMarshMallonChaveiro.jpeg", imgs: ["imagens/boca/GlossMarshMallonChaveiro.jpeg"] },
 
             { id: 12, name: "Escova Polvo para Cabelos cacheados",
-             category: "Acessórios", 
+             category: "acessorios", 
              price: 10.00, desc: "Escova Polvo perfeita para cabelos cacheados ou ondulados, não embaraça e não danifica os cachos!", 
-             img: "imagens/Acessórios/EscovaPolvoCabelosCah.jpeg", imgs: ["imagens/Acessórios/EscovaPolvoCabelosCah.jpeg"] },
+             img: "imagens/acessorios/escovapolvocabeloscah.jpeg", imgs: ["imagens/acessorios/escovapolvocabeloscah.jpeg"] },
        
             { id: 13, name: "Gloss de Maça",
-             category: "Boca", 
+             category: "boca", 
              price: 15.00, desc: "Gloss de Maça com tom vermelho suave perfeito para o dia a dia, com gostinho de maça!", 
-             img: "imagens/Boca/GlossMaça.jpeg", imgs: ["imagens/Boca/GlossMaça.jpeg"] },
+             img: "imagens/boca/GlossMaça.jpeg", imgs: ["imagens/boca/GlossMaça.jpeg"] },
 
             { id: 13, name: "Agua Termal PHÁLLEBEAUTY",
-             category: "SkinCare", 
+             category: "skincare", 
              price: 15.00, desc: "Agua Termal PHÁLLEBEAUTY Premium de altissima qualidade para todos os tipos de pele, garante macies e rejuvelhecimento para a pele!", 
-             img: "imagens/SkinCare/AguaTermalPh.jpeg", imgs: ["imagens/SkinCarre/AguaTermalPh.jpeg"] },
+             img: "imagens/skincare/AguaTermalPh.jpeg", imgs: ["imagens/SkinCarre/AguaTermalPh.jpeg"] },
 
             { id: 14, name: "Rolo para pele Jade Premium",
-             category: "SkinCare", 
+             category: "skincare", 
              price: 15.00, desc: "Rolo Facial para Massagear e alisar a sua pele feito em Jade, trazendo mais conforto e beleza para seu rosto.", 
-             img: "imagens/SkinCare/RoloJade.jpeg", imgs: ["imagens/SkinCare/RoloJade.jpeg"] },
+             img: "imagens/skincare/RoloJade.jpeg", imgs: ["imagens/skincare/RoloJade.jpeg"] },
 
             { id: 15, name: "Caneta Contorno para Sombrancelhas Dupla-Ponta",
-             category: "SkinCare", 
+             category: "skincare", 
              price: 15.00, desc: "Caneta contorno de Sombrancelhas perfeita para preenchimento exato das suas sombrancelhas e afins!", 
-             img: "imagens/SkinCare/ContornoSombrancelhas.jpeg", imgs: ["imagens/SkinCare/ContornoSombrancelhas.jpeg"] },
+             img: "imagens/skincare/ContornoSombrancelhas.jpeg", imgs: ["imagens/skincare/ContornoSombrancelhas.jpeg"] },
 
             { id: 16, name: "Sabonete Intimo Soul - Morango",
-             category: "Pele", 
+             category: "pele", 
              price: 15.00, desc: "Sabonete intimo com cheirinho de Morango garante sensação de leveza e higiene 24 horas!", 
-             img: "imagens/Pele/SaboneteIntimoMorango.jpeg", imgs: ["imagens/Pele/SaboneteIntimoMorango.jpeg"] },
+             img: "imagens/pele/SaboneteIntimoMorango.jpeg", imgs: ["imagens/pele/SaboneteIntimoMorango.jpeg"] },
 
             { id: 17, name: "Esponja Cogumelo - Varias cores",
-             category: "Acessórios", 
+             category: "acessorios", 
              price: 15.00, desc: "Esponja Cogumelo para aplicações facial, diversas cores!", 
-             img: "imagens/Acessórios/EsponjaCogumelo.jpeg", imgs: ["imagens/Acessórios/EsponjaCogumelo.jpeg"] },
+             img: "imagens/acessorios/EsponjaCogumelo.jpeg", imgs: ["imagens/acessorios/EsponjaCogumelo.jpeg"] },
 
             { id: 17, name: "Mascara de Cilios",
-             category: "Olhos", 
+             category: "olhos", 
              price: 15.00, desc: "Mascara de Cilios perfeita para realce dos Clilios!", 
-             img: "imagens/Olhos/mascaraCilios.jpeg", imgs: ["imagens/Olhos/mascaraCilios.jpeg"] },
+             img: "imagens/olhos/mascaraCilios.jpeg", imgs: ["imagens/olhos/mascaraCilios.jpeg"] },
             
             { id: 18, name: "Sabonete Intimo Soul - Petalas de Rosa",
-             category: "Pele", 
+             category: "pele", 
              price: 15.00, desc: "Sabonete intimo com cheirinho de Petalas de Rosa garante sensação de leveza e higiene 24 horas!", 
-             img: "imagens/Pele/SaboneteIntPetalasRosa.jpeg", imgs: ["imagens/Pele/SaboneteIntPetalasRosa.jpeg"] },
+             img: "imagens/pele/SaboneteIntPetalasRosa.jpeg", imgs: ["imagens/pele/SaboneteIntPetalasRosa.jpeg"] },
 
             ];
 
